@@ -429,18 +429,26 @@ void autonomous(void) {
     case 1:{ //1 Roller Red perp side
      //turn
      rightFront.spinFor(forward, 180, degrees, false);
+     rightBack.spinFor(reverse, 180, degrees, false);
+     leftFront.spinFor(reverse, 180, degrees, false);
      leftBack.spinFor(forward, 180, degrees);
      wait(0.25, seconds);
      //move forward towards roller
      rightFront.spinFor(forward, 100, degrees, false);
+     rightBack.spinFor(reverse, 100, degrees, false);
+     leftFront.spinFor(reverse, 100, degrees, false);
      leftFront.spinFor(forward, 100, degrees);
       wait(0.25, seconds);
      //turn to realign with the roller
      leftFront.spinFor(reverse, 100, degrees, false);
+     rightBack.spinFor(forward, 100, degrees, false);
+     leftFront.spinFor(forward, 100, degrees, false);
      rightBack.spinFor(reverse, 100, degrees);
       wait(0.25, seconds);
      //move back a bit to get closer to the roller
      rightFront.spinFor(reverse, 20, degrees, false);
+     rightBack.spinFor(forward, 20, degrees, false);
+     leftFront.spinFor(forward, 20, degrees, false);
      leftFront.spinFor(reverse, 20, degrees);
       wait(0.25, seconds);
      //spin the roller
@@ -452,6 +460,8 @@ void autonomous(void) {
     }
     case 2:{ //2 Roller Red parallel side 
       rightFront.spinFor(reverse, 20, degrees, false);
+      rightBack.spinFor(forward, 20, degrees, false);
+      leftFront.spinFor(reverse, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees);
       
       Intake.setVelocity(100, percent);
@@ -460,6 +470,8 @@ void autonomous(void) {
     }
     case 3: { //3 Roller Blue
       rightFront.spinFor(reverse,20, degrees, false);
+      rightBack.spinFor(forward, 20, degrees, false);
+      leftFront.spinFor(reverse, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees, false);
       Intake.setVelocity(100, percent);
       Intake.spinFor(reverse, 1500, degrees, true);
@@ -469,15 +481,21 @@ void autonomous(void) {
     case 4: { //4 Roller Blue perp side
       //move forward towards roller
       rightFront.spin(reverse, 250, percent);
+      rightBack.spinFor(forward, 250, degrees, false);
+      leftFront.spinFor(reverse, 250, degrees, false);
       leftFront.spin(forward, 250, percent);
       wait(0.5, seconds);
       //turn to realign with the roller
       rightFront.spinFor(forward, 250, degrees, false);
+      rightBack.spinFor(reverse, 250, degrees, false);
+      leftFront.spinFor(reverse, 250, degrees, false);
       leftBack.spinFor(forward, 250 , degrees); 
       wait(0.25, seconds);
       //;
       //move back a bit to get closer to the roller
       rightBack.spinFor(reverse, 50, degrees);
+      rightBack.spinFor(forward, 50, degrees, false);
+      leftFront.spinFor(reverse, 50, degrees, false);
       leftBack.spinFor(forward, 50, degrees);
       wait(0.25, seconds);
       //spin the roller
@@ -490,129 +508,167 @@ void autonomous(void) {
       break;
     }
     case 5: { //5 red shoot disk into high goal parallel side
-      vex::task DriveCode(drivePID);
-      resetDriveSensors = true;
-      //set the indexer to false first
-      
       //move forward torwards disk
       rightFront.spinFor(forward, 2000, degrees, false);
+      rightBack.spinFor(reverse, 2000, degrees, false);
+      leftFront.spinFor(forward, 2000, degrees, false);
       leftFront.spinFor(reverse, 2000, degrees);
       wait(0.25, seconds);
       //turn towards disc
       rightFront.spinFor(forward, 100, degrees, false);
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
       wait(0.25, seconds);
       //move forward and intake the disc
       rightFront.spinFor(forward, 100, degrees, false);
-      leftFront.spinFor(reverse, 100, degrees, false);
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(forward, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees);
+      wait(0.25, seconds);
+      //intake disc
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //turn to shooting position
       leftBack.spinFor(forward, 1000, degrees, false);
+      rightBack.spinFor(reverse, 1000, degrees, false);
+      leftFront.spinFor(reverse, 1000, degrees, false);
       rightFront.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //shoot out the disc ._.
       //set velocity
-      flywheel.setVelocity(95,percent);
-      flywheel2.setVelocity(95,percent);
+      flywheel.setVelocity(87,percent);
+      flywheel2.setVelocity(87,percent);
       wait(0.25, seconds);
-      //then shoot
-      flywheel.spinFor(forward, 100, degrees, false);
-      flywheel2.spinFor(forward, 100, degrees);
-      wait(0.25, seconds);
+      //index and shoot the disc
+      flywheel.spin(forward);
+      flywheel2.spin(reverse);
+      indexer.spinFor(forward, 1000, degrees);
+      wait(5, seconds);
       break;
     }
     case 6: {//6 blue shoot disk into high goal parallel side
       //move forward torwards disk
       rightFront.spinFor(forward, 2000, degrees, false);
+      rightBack.spinFor(reverse, 2000, degrees, false);
+      leftFront.spinFor(forward, 2000, degrees, false);
       leftFront.spinFor(reverse, 2000, degrees);
       wait(0.25, seconds);
       //turn towards disc
       rightFront.spinFor(forward, 100, degrees, false);
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
       wait(0.25, seconds);
-      //move forward towards disc
+      //move forward and intake the disc
       rightFront.spinFor(forward, 100, degrees, false);
-      leftFront.spinFor(reverse, 100, degrees, false);
-      //intake disc
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(forward, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees);
       wait(0.25, seconds);
+      //intake disc
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //turn to shooting position
       leftBack.spinFor(forward, 1000, degrees, false);
+      rightBack.spinFor(reverse, 1000, degrees, false);
+      leftFront.spinFor(reverse, 1000, degrees, false);
       rightFront.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //shoot out the disc ._.
       //set velocity
-      flywheel.setVelocity(95,percent);
-      flywheel2.setVelocity(95,percent);
+      flywheel.setVelocity(87,percent);
+      flywheel2.setVelocity(87,percent);
       wait(0.25, seconds);
-      //then shoot
-      flywheel.spinFor(forward, 100, degrees, false);
-      flywheel2.spinFor(forward, 100, degrees);
-      wait(0.25, seconds);
+      //index and shoot the disc
+      flywheel.spin(forward);
+      flywheel2.spin(reverse);
+      indexer.spinFor(forward, 1000, degrees);
+      wait(5, seconds);
       break;
     }
     case 7: {//7 red awp
       //roll the roller first ._.
       rightFront.spinFor(forward, 20, degrees, false);
+      rightBack.spinFor(reverse, 20, degrees, false);
+      leftBack.spinFor(reverse, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees);
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //then move forward
       rightFront.spinFor(forward, 500, degrees, false);
+      rightBack.spinFor(reverse, 500, degrees, false);
+      leftBack.spinFor(forward, 500, degrees, false);
       leftFront.spinFor(reverse, 500, degrees);
       wait(0.25, seconds);
       //turn towards the disc
       rightFront.spinFor(forward, 100, degrees, false);
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
       wait(0.25, seconds);
       //move towards disc and intake it
       rightFront.spinFor(forward, 1000, degrees, false);
-      leftFront.spinFor(reverse, 1000, degrees, false);
+      rightBack.spinFor(reverse, 1000, degrees, false);
+      leftBack.spinFor(reverse, 1000, degrees, false);
+      leftFront.spinFor(reverse, 1000, degrees);
       wait(0.25, seconds);
       //intake the disc
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //turn towards the high goal to shoot
       rightFront.spinFor(reverse, 100, degrees, false);
+      rightBack.spinFor(forward, 100, degrees, false);
+      leftFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(reverse, 100, degrees);
       wait(0.25, seconds);
       //start up the flywheel and use indexer to shoot the disc out
-      flywheel.spinFor(forward, 200, degrees, false);
-      flywheel2.spinFor(forward, 200, degrees);
-      wait(0.25, seconds);
+      flywheel.spin(forward);
+      flywheel2.spin(reverse);
+      indexer.spinFor(forward, 1000, degrees);
+      wait(5, seconds);
       break;
     }
     case 8: { //8 blue awp
       //roll the roller first ._.
       rightFront.spinFor(forward, 20, degrees, false);
+      rightBack.spinFor(reverse, 20, degrees, false);
+      leftBack.spinFor(reverse, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees);
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //then move forward
       rightFront.spinFor(forward, 500, degrees, false);
+      rightBack.spinFor(reverse, 500, degrees, false);
+      leftBack.spinFor(forward, 500, degrees, false);
       leftFront.spinFor(reverse, 500, degrees);
       wait(0.25, seconds);
       //turn towards the disc
       rightFront.spinFor(forward, 100, degrees, false);
+      rightBack.spinFor(reverse, 100, degrees, false);
+      leftFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
       wait(0.25, seconds);
       //move towards disc and intake it
       rightFront.spinFor(forward, 1000, degrees, false);
-      leftFront.spinFor(reverse, 1000, degrees, false);
+      rightBack.spinFor(reverse, 1000, degrees, false);
+      leftBack.spinFor(reverse, 1000, degrees, false);
+      leftFront.spinFor(reverse, 1000, degrees);
       wait(0.25, seconds);
       //intake the disc
       Intake.spinFor(forward, 1000, degrees);
       wait(0.25, seconds);
       //turn towards the high goal to shoot
       rightFront.spinFor(reverse, 100, degrees, false);
+      rightBack.spinFor(forward, 100, degrees, false);
+      leftFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(reverse, 100, degrees);
       wait(0.25, seconds);
       //start up the flywheel and use indexer to shoot the disc out
-      flywheel.spinFor(forward, 200, degrees, false);
-      flywheel2.spinFor(forward, 200, degrees);
-      wait(0.25, seconds);
+      flywheel.spin(forward);
+      flywheel2.spin(reverse);
+      indexer.spinFor(forward, 1000, degrees);
+      wait(5, seconds);
       break;
     }
 }
