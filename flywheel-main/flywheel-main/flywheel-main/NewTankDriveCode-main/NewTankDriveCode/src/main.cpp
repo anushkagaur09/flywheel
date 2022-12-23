@@ -326,14 +326,14 @@ void flywheelPIDSlow() {
 }
 void flywheelMovement() {
     if(Controller1.ButtonY.pressing()){
-      flywheel.setVelocity(87, pct);
-      flywheel2.setVelocity(87, pct);
+      flywheel.setVelocity(80, pct);
+      flywheel2.setVelocity(80, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
     } else if(Controller1.ButtonX.pressing()) {
-      flywheel.setVelocity(70, pct);
-      flywheel2.setVelocity(70, pct);
+      flywheel.setVelocity(60, pct);
+      flywheel2.setVelocity(60, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
@@ -344,15 +344,15 @@ void flywheelMovement() {
       flywheel2.stop();
     }
     if(Controller1.ButtonY.pressing()){
-      flywheel.setVelocity(87, pct);
-      flywheel2.setVelocity(87, pct);
+      flywheel.setVelocity(80, pct);
+      flywheel2.setVelocity(80, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
     } 
     else if(Controller1.ButtonX.pressing()) {
-      flywheel.setVelocity(70, pct);
-      flywheel2.setVelocity(70, pct);
+      flywheel.setVelocity(60, pct);
+      flywheel2.setVelocity(60, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
@@ -430,18 +430,23 @@ void autonomous(void) {
      //turn
      rightFront.spinFor(forward, 180, degrees, false);
      leftBack.spinFor(forward, 180, degrees);
+     wait(0.25, seconds);
      //move forward towards roller
      rightFront.spinFor(forward, 100, degrees, false);
      leftFront.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
      //turn to realign with the roller
      leftFront.spinFor(reverse, 100, degrees, false);
      rightBack.spinFor(reverse, 100, degrees);
+      wait(0.25, seconds);
      //move back a bit to get closer to the roller
      rightFront.spinFor(reverse, 20, degrees, false);
      leftFront.spinFor(reverse, 20, degrees);
+      wait(0.25, seconds);
      //spin the roller
      Intake.setVelocity(100, percent);
      Intake.spinFor(forward, 1000, degrees);
+     wait(0.25, seconds);
 
       break;
     }
@@ -469,13 +474,16 @@ void autonomous(void) {
       //turn to realign with the roller
       rightFront.spinFor(forward, 250, degrees, false);
       leftBack.spinFor(forward, 250 , degrees); 
+      wait(0.25, seconds);
       //;
       //move back a bit to get closer to the roller
       rightBack.spinFor(reverse, 50, degrees);
       leftBack.spinFor(forward, 50, degrees);
+      wait(0.25, seconds);
       //spin the roller
       Intake.setVelocity(100, percent);
       Intake.spinFor(reverse, 1500, degrees);
+      wait(0.25, seconds);
 
      break;
 
@@ -489,121 +497,125 @@ void autonomous(void) {
       //move forward torwards disk
       rightFront.spinFor(forward, 2000, degrees, false);
       leftFront.spinFor(reverse, 2000, degrees);
+      wait(0.25, seconds);
       //turn towards disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
       //move forward and intake the disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftFront.spinFor(reverse, 100, degrees, false);
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //turn to shooting position
       leftBack.spinFor(forward, 1000, degrees, false);
       rightFront.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //shoot out the disc ._.
       //set velocity
       flywheel.setVelocity(95,percent);
       flywheel2.setVelocity(95,percent);
+      wait(0.25, seconds);
       //then shoot
       flywheel.spinFor(forward, 100, degrees, false);
       flywheel2.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
       break;
     }
     case 6: {//6 blue shoot disk into high goal parallel side
-      vex::task DriveCode(drivePID);
-      resetDriveSensors = true;
-      //set the indexer to false first
-  
       //move forward torwards disk
       rightFront.spinFor(forward, 2000, degrees, false);
       leftFront.spinFor(reverse, 2000, degrees);
+      wait(0.25, seconds);
       //turn towards disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
-      //move forward and intake the disc
+      wait(0.25, seconds);
+      //move forward towards disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftFront.spinFor(reverse, 100, degrees, false);
+      //intake disc
+      wait(0.25, seconds);
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //turn to shooting position
       leftBack.spinFor(forward, 1000, degrees, false);
       rightFront.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //shoot out the disc ._.
       //set velocity
       flywheel.setVelocity(95,percent);
       flywheel2.setVelocity(95,percent);
+      wait(0.25, seconds);
       //then shoot
       flywheel.spinFor(forward, 100, degrees, false);
       flywheel2.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
       break;
     }
     case 7: {//7 red awp
-      vex::task DriveCode(drivePID);
-      resetDriveSensors = true;
-      //set the indexer to false first
-      
       //roll the roller first ._.
       rightFront.spinFor(forward, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees);
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //then move forward
       rightFront.spinFor(forward, 500, degrees, false);
       leftFront.spinFor(reverse, 500, degrees);
+      wait(0.25, seconds);
       //turn towards the disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
       //move towards disc and intake it
       rightFront.spinFor(forward, 1000, degrees, false);
       leftFront.spinFor(reverse, 1000, degrees, false);
-
+      wait(0.25, seconds);
+      //intake the disc
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //turn towards the high goal to shoot
       rightFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(reverse, 100, degrees);
+      wait(0.25, seconds);
       //start up the flywheel and use indexer to shoot the disc out
       flywheel.spinFor(forward, 200, degrees, false);
       flywheel2.spinFor(forward, 200, degrees);
+      wait(0.25, seconds);
       break;
     }
     case 8: { //8 blue awp
-      vex::task DriveCode(drivePID);
-      resetDriveSensors = true;
-      //set the indexer to false first
-      
       //roll the roller first ._.
       rightFront.spinFor(forward, 20, degrees, false);
       leftFront.spinFor(forward, 20, degrees);
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //then move forward
       rightFront.spinFor(forward, 500, degrees, false);
       leftFront.spinFor(reverse, 500, degrees);
+      wait(0.25, seconds);
       //turn towards the disc
       rightFront.spinFor(forward, 100, degrees, false);
       leftBack.spinFor(forward, 100, degrees);
+      wait(0.25, seconds);
       //move towards disc and intake it
       rightFront.spinFor(forward, 1000, degrees, false);
       leftFront.spinFor(reverse, 1000, degrees, false);
-
+      wait(0.25, seconds);
+      //intake the disc
       Intake.spinFor(forward, 1000, degrees);
+      wait(0.25, seconds);
       //turn towards the high goal to shoot
       rightFront.spinFor(reverse, 100, degrees, false);
       leftBack.spinFor(reverse, 100, degrees);
+      wait(0.25, seconds);
       //start up the flywheel and use indexer to shoot the disc out
       flywheel.spinFor(forward, 200, degrees, false);
       flywheel2.spinFor(forward, 200, degrees);
+      wait(0.25, seconds);
       break;
     }
 }
-/*======================================================================================================================
-  example of how to do PID in auton
-  resetDriveSensors = true;
-  desiredValue = 300; //move forward 300
-  desiredTurnValue = 600; //turn 600
-
-  vex::task::sleep(1000); // have it stop for a second
-
-  desiredValue = 300; //move forward 300
-  desiredTurnValue = 300; //turn 300
-  =======================================================================================================================*/
-
 }
 
 /*---------------------------------------------------------------------------*/
@@ -624,25 +636,16 @@ void usercontrol(void) {
     intakeCode();
     flywheelMovement();
     IndexerCode();
-    //expansion using two pistons being controlled together
-    //these pistons will use boolean values to send info to the brain
+    //expansion using a double-acting piston
+    //this piston will use boolean values to send info to the brain
     //so we will be using simple detection for this
     
     if(Controller1.ButtonA.pressing() && Controller1.ButtonB.pressing()){
       Expansion.set(false);
     }
-    else if(Controller1.ButtonB.pressing()){
+    else{
       Expansion.set(true);
     }
-    
-    
-    /*===============================================TO BE FINISHED========================================================*/
-    //flywheel
-    //flywheelCode();
-    //catapult
-    //catapultCode();
-    /*=====================================================================================================================*/
-
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
