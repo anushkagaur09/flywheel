@@ -293,7 +293,7 @@ void flywheelRun() {
   }
 }
 void flywheelSlow() {
-    flywheelVelocity = 70;
+    flywheelVelocity = 60;
     flywheelRun();
 }
 void flywheelFast() {
