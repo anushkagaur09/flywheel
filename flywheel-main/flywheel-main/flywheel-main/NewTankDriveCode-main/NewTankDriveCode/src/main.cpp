@@ -183,6 +183,7 @@ void rollerCode(){
 }
 
 void IndexerCode(){
+  indexer.setVelocity(100, percent);
   if(Controller1.ButtonR1.pressing()){
     indexer.spin(forward);
   }
