@@ -183,8 +183,11 @@ void rollerCode(){
 }
 
 void IndexerCode(){
-  if(Controller1.ButtonB.pressing()){
+  if(Controller1.ButtonR1.pressing()){
     indexer.spin(forward);
+  }
+  else if(Controller1.ButtonR2.pressing()){
+    indexer.spin(reverse);
   }
   else{
     indexer.stop();
@@ -325,13 +328,13 @@ void flywheelPIDSlow() {
   }
 }
 void flywheelMovement() {
-    if(Controller1.ButtonY.pressing()){
+    if(Controller1.ButtonDown.pressing()){
       flywheel.setVelocity(87, pct);
       flywheel2.setVelocity(87, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
-    } else if(Controller1.ButtonX.pressing()) {
+    } else if(Controller1.ButtonUp.pressing()) {
       flywheel.setVelocity(57, pct);
       flywheel2.setVelocity(57, pct);
       flywheel.spin(forward);
@@ -343,14 +346,14 @@ void flywheelMovement() {
       flywheel.stop();
       flywheel2.stop();
     }
-    if(Controller1.ButtonY.pressing()){
+    if(Controller1.ButtonDown.pressing()){
       flywheel.setVelocity(87, pct);
       flywheel2.setVelocity(87, pct);
       flywheel.spin(forward);
       flywheel2.spin(reverse);
       Controller1XY = false;
     } 
-    else if(Controller1.ButtonX.pressing()) {
+    else if(Controller1.ButtonUp.pressing()) {
       flywheel.setVelocity(57, pct);
       flywheel2.setVelocity(57, pct);
       flywheel.spin(forward);
