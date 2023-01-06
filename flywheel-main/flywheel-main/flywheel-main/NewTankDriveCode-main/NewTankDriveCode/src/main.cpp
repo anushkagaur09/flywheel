@@ -11,10 +11,10 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// rightFront           motor         5               
+// rightFront           motor         6               
 // leftFront            motor         3               
 // leftBack             motor         8               
-// rightBack            motor         13             
+// rightBack            motor         14            
 // Intake               motor         9               
 // Expansion            digital_out   A               
 // flywheel             motor         11              
