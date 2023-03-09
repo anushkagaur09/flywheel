@@ -547,7 +547,7 @@ void autonomous(void) {
 }
 
 void flywheelUp(void) {
-  flywheel_PID(58.0);
+  flywheel_PID(100.0);
 }
 
 /*---------------------------------------------------------------------------*/
