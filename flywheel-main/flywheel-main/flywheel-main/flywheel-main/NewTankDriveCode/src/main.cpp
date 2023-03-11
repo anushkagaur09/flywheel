@@ -179,7 +179,7 @@ void rollerCode(){
   }
 }
 void intakeCode(){
-  Intake.setVelocity(100,percent);
+  Intake.setVelocity(80,percent);
   if(Controller1.ButtonL1.pressing()){
     Intake.spin(forward);
     
